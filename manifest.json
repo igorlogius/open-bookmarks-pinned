@@ -5,16 +5,16 @@
       "background.js"
     ]
   },
-  "description": "add an option to the bookmark context menu to open tabs as pinned",
+  "description": "Add an option to the bookmark context menu to open tabs as pinned",
   "icons": {
     "320": "icon.png"
   },
   "manifest_version": 2,
-  "name": "open-bookmarks-pinned",
+  "name": "Open Bookmarks Pinned",
   "permissions": [
     "tabs",
     "menus",
     "bookmarks"
   ],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

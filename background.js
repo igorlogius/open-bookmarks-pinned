@@ -1,3 +1,5 @@
+/* global browser */
+
 //const temporary = browser.runtime.id.endsWith('@temporary-addon'); // debugging?
 const manifest = browser.runtime.getManifest();
 const extname = manifest.name;
@@ -17,17 +19,14 @@ function recGetBookmarkUrls(bookmarkItem){
 
 browser.menus.create({
 	id: extname,
-	title: "Open pinned",
+	title: extname,
 	contexts: ["bookmark", "link"],
-	onclick: async function(info, tab) {
+	onclick: async function(info) {
 		// open bookmarks pinned
 		if(info.bookmarkId){
 
 			const subtree = await browser.bookmarks.getSubTree(info.bookmarkId);
-
 			const urls = recGetBookmarkUrls(subtree[0]);
-
-			//console.log(urls);
 
 			for(const url of urls){
 				browser.tabs.create({
@@ -37,7 +36,6 @@ browser.menus.create({
 				});
 			}
 		}else
-		// open links pinned 
 		if(info.linkUrl) {
 			browser.tabs.create({
 				'pinned': true,
